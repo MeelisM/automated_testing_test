@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MeelisM/automated_testing_test#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "chromedriver": "^94.0.0",
     "geckodriver": "^2.0.4",
     "selenium-webdriver": "^4.0.0"
