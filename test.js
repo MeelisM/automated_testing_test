@@ -1,5 +1,6 @@
 const { By, Key, Builder } = require('selenium-webdriver');
 require('chromedriver');
+//give console.log different colors
 const chalk = require('chalk');
 
 async function test() {
@@ -22,7 +23,7 @@ async function test() {
   await driver.get('https://www.weekendshoes.ee/naistele/saapad.html');
   console.log(chalk.green(`3. Opened women's shoes`));
 
-  // await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[2]/div/div[3]/div/div/a'));
+  await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[2]/div/div[3]/div/div/a'));
 }
 
 test();
