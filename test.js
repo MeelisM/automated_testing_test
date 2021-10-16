@@ -3,11 +3,12 @@ require('chromedriver');
 //give console.log different colors
 const chalk = require('chalk');
 
+//test itself
 async function test() {
   //launches browser
   let driver = await new Builder().forBrowser('chrome').build();
 
-  //opens the webpage
+  //opens webpage
   await driver.get('https://www.weekendshoes.ee');
   console.log(chalk.green(`1. Opened front page`));
 
@@ -23,6 +24,7 @@ async function test() {
   await driver.get('https://www.weekendshoes.ee/naistele/saapad.html');
   console.log(chalk.green(`3. Opened women's shoes`));
 
+  // add to favourites element
   await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[2]/div/div[3]/div/div/a'));
 }
 
