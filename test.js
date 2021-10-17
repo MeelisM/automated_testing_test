@@ -7,6 +7,7 @@ const chalk = require('chalk');
 async function test() {
   //launches browser
   let driver = await new Builder().forBrowser('chrome').build();
+  driver.manage().window().maximize();
 
   //opens webpage
   await driver.get('https://www.weekendshoes.ee');
@@ -24,8 +25,24 @@ async function test() {
   await driver.get('https://www.weekendshoes.ee/naistele/saapad.html');
   console.log(chalk.green(`3. Opened women's shoes`));
 
-  // add to favourites element
-  await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[2]/div/div[3]/div/div/a'));
+  await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[1]/div/a')).click();
+  console.log(chalk.green('4. Opened single shoe'));
+
+  setTimeout(async function () {
+    await driver.findElement(By.xpath('//*[@id="product-options-wrapper"]/div/div/div/div')).click();
+    console.log(chalk.green('5. Open drop-down menu'));
+  }, 3000);
+
+  setTimeout(async function () {
+    await driver.findElement(By.xpath('//*[@id="product-options-wrapper"]/div/div/div/div/div[3]/div/ul/li[2]/div[1]')).click();
+    console.log(chalk.green('6. Picked from drop-down menu'));
+  }, 3000);
+
+  setTimeout(async function () {
+    let testEle = await driver.findElement(By.xpath('/html/body/div[2]/div[3]/div/span'));
+
+    driver.executeScript('arguments[0].scrollIntoView()', testEle);
+  }, 3000);
 }
 
 test();
