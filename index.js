@@ -23,10 +23,10 @@ async function test() {
   await driver.get('https://www.weekendshoes.ee/naistele/saapad.html');
   console.log(chalk.green(`2. Opened women's shoes`));
 
-  //adds product to wishlist
+  //adds item to wishlist
   await driver.manage().setTimeouts({ implicit: 10000 });
-  const productElement = await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[6]/div/div[3]/div/div/a'));
-  driver.executeScript('arguments[0].click();', productElement);
+  const itemElement = await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[6]/div/div[3]/div/div/a'));
+  driver.executeScript('arguments[0].click();', itemElement);
   console.log(chalk.green('3. Add product to wishlist'));
 
   // finds wishlist
@@ -39,7 +39,7 @@ async function test() {
   await driver.findElement(By.xpath('//*[@id="miniwishlist-content-wrapper"]/div/div/div/button')).click();
   console.log(chalk.green('5. Opened wishlist'));
 
-  // opens up product page
+  // opens up item page
   await driver.manage().setTimeouts({ implicit: 10000 });
   const wishlistItem = await driver.findElement(By.className('product-item-link'));
   driver.executeScript('arguments[0].click();', wishlistItem);
@@ -70,7 +70,7 @@ async function test() {
   await driver.findElement(By.className('increase-qty')).click();
   console.log(chalk.green('11. Increased quantity by 1'));
 
-  // remove product
+  // removes item
   await driver.manage().setTimeouts({ implicit: 10000 });
   await driver.findElement(By.xpath('//*[@id="shopping-cart-table"]/tbody/tr[1]/td[6]/a')).click();
   console.log(chalk.green('12. Removed all items'));
@@ -88,3 +88,12 @@ async function test() {
 }
 
 test();
+
+// async function wishlistConfirmation() {
+//   const bodyElement = await driver.findElement(By.xpath('/html/body'));
+//   driver.wait(function () {
+//     return bodyElement.findElement(By.className('message-success')).then(function (result) {
+//       return result == true;
+//     });
+//   }, 10000);
+// }
