@@ -29,8 +29,8 @@ async function test() {
   driver.executeScript('arguments[0].click();', itemElement);
   console.log(chalk.green('3. Add product to wishlist'));
 
+  loadingCheck();
   // finds wishlist
-  await driver.manage().setTimeouts({ implicit: 10000 });
   await driver.findElement(By.id('wishlist-link')).click();
   console.log(chalk.green('4. Found wishlist'));
 
@@ -70,6 +70,8 @@ async function test() {
   await driver.findElement(By.className('increase-qty')).click();
   console.log(chalk.green('11. Increased quantity by 1'));
 
+  loadingCheck();
+
   // removes item
   await driver.manage().setTimeouts({ implicit: 10000 });
   await driver.findElement(By.xpath('//*[@id="shopping-cart-table"]/tbody/tr[1]/td[6]/a')).click();
@@ -85,6 +87,16 @@ async function test() {
   await driver.findElement(By.css('#sorter [value="bestsellers"]')).click();
   console.log(chalk.green('14. Sorted by popularity'));
   console.log(chalk.yellow('TEST COMPLETED'));
+
+  // checks if page is loading
+  async function loadingCheck() {
+    const bodyElement = await driver.findElement(By.xpath('/html/body'));
+    driver.wait(function () {
+      return bodyElement.getAttribute('aria-busy').then(function (result) {
+        return result === 'false';
+      });
+    }, 20000);
+  }
 }
 
 test();
