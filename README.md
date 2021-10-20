@@ -1,6 +1,6 @@
 ﻿# Automated testing with Selenium
 
-## How to:
+## HOW TO
 
 ### Install packages
 
@@ -10,7 +10,7 @@
 
 `node index`
 
-## About:
+## ABOUT
 
 ### Test requirements
 
