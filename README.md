@@ -9,9 +9,6 @@
 ### Run the test
 
 `node index`
-&nbsp;
-&nbsp;
-&nbsp;
 
 ## ABOUT
 
