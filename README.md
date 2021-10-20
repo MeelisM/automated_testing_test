@@ -15,7 +15,7 @@
 ### Test requirements
 
 1. Use 4 different Locators (css, selector, id, className, xpath etc)
-2. Use 1 type of Wait.
+2. Use atleast 1 type of Wait.
 3. Console.log every action (click, sendKeys).
 
 ### Test guide
