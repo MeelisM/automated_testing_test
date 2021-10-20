@@ -2,13 +2,9 @@
 
 ## HOW TO:
 
-```
-npm install
-```
+`npm install`
 
-```
-node index
-```
+`node index`
 
 ### Test requirements
 
