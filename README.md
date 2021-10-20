@@ -1,4 +1,4 @@
-﻿# automated_testing_test
+﻿# Automated testing with Selenium
 
 ## HOW TO: 
 ```
