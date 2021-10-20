@@ -138,6 +138,8 @@ async function test() {
 
 test();
 
+// Checks for wishlist confirmation
+
 // async function wishlistConfirmation() {
 //   const bodyElement = await driver.findElement(By.xpath('/html/body'));
 //   driver.wait(function () {
