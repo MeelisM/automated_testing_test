@@ -138,7 +138,7 @@ async function test() {
 
 test();
 
-// Checks for wishlist confirmation
+// Checks if "added to wishlist" confirmation appears
 
 // async function wishlistConfirmation() {
 //   const bodyElement = await driver.findElement(By.xpath('/html/body'));
