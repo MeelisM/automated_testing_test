@@ -19,7 +19,7 @@
 ### Test guide
 
 1. Open the webpage. Log it's title.
-2. Go to: https://www.weekendshoes.ee/naistele/saapad.html
+2. Go to: [Link](https://www.weekendshoes.ee/naistele/saapad.html)
 3. Add one item to the wishlist.
 4. Open that item via the wishlist.
 5. Add that item into the shopping cart.
