@@ -2,7 +2,11 @@
 
 ## HOW TO:
 
+### Install packages
+
 `npm install`
+
+### Run the test
 
 `node index`
 
