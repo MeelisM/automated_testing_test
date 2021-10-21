@@ -13,7 +13,8 @@ async function test() {
 
   //opens webpage
   await driver
-    .get('https://www.weekendshoes.ee').then(console.log(chalk.green('1. Opened front page')));
+    .get('https://www.weekendshoes.ee')
+    .then(console.log(chalk.green('1. Opened front page')));
 
   //logs webpage's title
   const pageTitle = await driver.getTitle();
@@ -21,81 +22,133 @@ async function test() {
 
   //opens up women's shoes
   await driver
-    .get('https://www.weekendshoes.ee/naistele/saapad.html').then(console.log(chalk.green("2. Opened women's shoes")));
+    .get('https://www.weekendshoes.ee/naistele/saapad.html')
+    .then(console.log(chalk.green("2. Opened women's shoes")));
 
   //adds item to wishlist
   await driver.manage().setTimeouts({ implicit: 10000 });
-  const itemElement = await driver.findElement(By.xpath('//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[6]/div/div[3]/div/div/a'));
-  driver.executeScript('arguments[0].click();', itemElement).then(console.log(chalk.green('3. Added item to wishlist')));
+  const itemElement = await driver.findElement(
+    By.xpath(
+      '//*[@id="amasty-shopby-product-list"]/div[3]/ol/li[4]/div/div[3]/div/div/a'
+    )
+  );
+  driver
+    .executeScript('arguments[0].click();', itemElement)
+    .then(console.log(chalk.green('3. Added item to wishlist')));
 
-  loadingCheck();
+  wishlistConfirmation();
+
   // opens wishlist menu
-  await driver.findElement(By.id('wishlist-link')).click().then(console.log(chalk.green('4. Found wishlist')));
+  await driver
+    .findElement(By.id('wishlist-link'))
+    .click()
+    .then(console.log(chalk.green('4. Found wishlist')));
 
   // opens wishlist
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.xpath('//*[@id="miniwishlist-content-wrapper"]/div/div/div/button')).click().then(console.log(chalk.green('5. Opened wishlist')));
+  await driver
+    .findElement(
+      By.xpath('//*[@id="miniwishlist-content-wrapper"]/div/div/div/button')
+    )
+    .click()
+    .then(console.log(chalk.green('5. Opened wishlist')));
 
   // opens up item page
-  await driver.manage().setTimeouts({ implicit: 10000 });
-  const wishlistItem = await driver.findElement(By.className('product-item-link'));
-  driver.executeScript('arguments[0].click();', wishlistItem).then(console.log(chalk.green('6. Opened item page')));
+  const wishlistItem = await driver.findElement(
+    By.className('product-item-link')
+  );
+
+  driver
+    .executeScript('arguments[0].click();', wishlistItem)
+    .then(console.log(chalk.green('6. Opened item page')));
 
   // picks size from drop-down menu
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.className('selectric-wrapper')).click().then(console.log(chalk.green('7. Opened drop-down menu')));
+  await driver
+    .findElement(By.className('selectric-wrapper'))
+    .click()
+    .then(console.log(chalk.green('7. Opened drop-down menu')));
 
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.xpath('//*[@id="product-options-wrapper"]/div/div/div/div/div[3]/div/ul/li[3]')).click().then(console.log(chalk.green('8. Picked drop-down menu value')));
+  await driver
+    .findElement(
+      By.xpath(
+        '//*[@id="product-options-wrapper"]/div/div/div/div/div[3]/div/ul/li[3]'
+      )
+    )
+    .click()
+    .then(console.log(chalk.green('8. Picked drop-down menu value')));
 
   // adds to shopping cart
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.id('product-addtocart-button')).click().then(console.log(chalk.green('9. Added to shopping cart')));
+  await driver
+    .findElement(By.id('product-addtocart-button'))
+    .click()
+    .then(console.log(chalk.green('9. Added to shopping cart')));
 
   // opens shopping cart
   await driver.manage().setTimeouts({ implicit: 10000 });
-  const shoppingCart = await driver.findElement(By.xpath('//*[@id="minicart-content-wrapper"]/div[2]/div[4]/div/a'));
-  driver.executeScript('arguments[0].click();', shoppingCart).then(console.log(chalk.green('10. Opened shopping cart')));
+  const shoppingCart = await driver.findElement(
+    By.xpath('//*[@id="minicart-content-wrapper"]/div[2]/div[4]/div/a')
+  );
+  driver
+    .executeScript('arguments[0].click();', shoppingCart)
+    .then(console.log(chalk.green('10. Opened shopping cart')));
 
   // increases quantity by 1
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.className('increase-qty')).click().then(console.log(chalk.green('11. Increased quantity by 1')));
+  await driver
+    .findElement(By.className('increase-qty'))
+    .click()
+    .then(console.log(chalk.green('11. Increased quantity by 1')));
 
   loadingCheck();
 
   // removes item
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.xpath('//*[@id="shopping-cart-table"]/tbody/tr[1]/td[6]/a')).click().then(console.log(chalk.green('12. Removed items')));
+  await driver
+    .findElement(By.xpath('//*[@id="shopping-cart-table"]/tbody/tr[1]/td[6]/a'))
+    .click()
+    .then(console.log(chalk.green('12. Removed items')));
 
   // searches for searchString
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.id('search')).sendKeys(searchString, Key.RETURN).then(console.log(chalk.green('13. Used search')));
+  await driver
+    .findElement(By.id('search'))
+    .sendKeys(searchString, Key.RETURN)
+    .then(console.log(chalk.green('13. Used search')));
 
   // sorts by popularity
   await driver.manage().setTimeouts({ implicit: 10000 });
-  await driver.findElement(By.css('#sorter [value="bestsellers"]')).click().then(console.log(chalk.green('14. Sorted by popularity')));
+  await driver
+    .findElement(By.css('#sorter [value="bestsellers"]'))
+    .click()
+    .then(console.log(chalk.green('14. Sorted by popularity')));
   console.log(chalk.yellow('TEST COMPLETED'));
 
   // checks if page is loading
   async function loadingCheck() {
-    const bodyElement = await driver.findElement(By.xpath('/html/body'));
+    const bodyElement = await driver.findElement(By.css('body'));
     driver.wait(function () {
-      return bodyElement.getAttribute('aria-busy').then(function (result) {
-        return result === 'false';
-      });
-    }, 20000);
+      return bodyElement
+        .findElement(By.className('loading-mask'))
+        .then(function (result) {
+          return result === false;
+        });
+    }, 10000);
+  }
+
+  // Checks if "added to wishlist" confirmation appears
+  async function wishlistConfirmation() {
+    const bodyElement = await driver.findElement(By.css('body'));
+    driver.wait(function () {
+      return bodyElement
+        .findElement(By.className('message-success'))
+        .then(function (result) {
+          return result === true;
+        });
+    }, 10000);
   }
 }
 
 test();
-
-// Checks if "added to wishlist" confirmation appears
-
-// async function wishlistConfirmation() {
-//   const bodyElement = await driver.findElement(By.xpath('/html/body'));
-//   driver.wait(function () {
-//     return bodyElement.findElement(By.className('message-success')).then(function (result) {
-//       return result == true;
-//     });
-//   }, 10000);
-// }
